@@ -26,16 +26,19 @@ def scrape_links(webpage):
 		try:
 			data = element.find('div', {'class':'srg'}).find_all('div', {'class':'g'})
 			for i in data:
-				temp = i.find('div').find('div', {'class':'rc'}).find('div', {'class': 'r'}).find_all('a')
+				total = i.find('div').find('div', {'class':'rc'})
+				temp = total.find('div', {'class': 'r'}).find_all('a')
+				s = total.find('div', {'class': 's'})
+				paras = s.find('div').find('span', {'class':'st'})
 				for j in temp:
-					info.append((j['href'], j.find('h3')))
+					info.append((j['href'], j.find('h3'), paras.text))
 		except Exception as e:
 			pass
 
 	final = []
 	for i in info:
 		if i[0] != '#' and i[1] != None:
-			final.append((i[0], i[1].text))
+			final.append((i[1].text, i[0], i[2]))
 
 	return final
 
@@ -49,9 +52,9 @@ def display(data):
 		else:
 			length += len(i[0])
 
-		toBeDisplayed += '-' * (length//3)
 		toBeDisplayed += '\n' + i[1] + '\n'
 		toBeDisplayed +=  i[0] + '\n'
+		toBeDisplayed += i[2] + '\n'
 
 	print(toBeDisplayed)
 
