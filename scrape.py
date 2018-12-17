@@ -5,7 +5,7 @@ from urllib.request import urlopen, Request
 LINK = "https://www.google.co.in/search?q="
 
 def create_query(query):
-	return LINK + '+'.join(query.split(" "))
+	return LINK + '+'.join(query)
 
 def get_webpage(query):
 	headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.3'}
@@ -40,7 +40,7 @@ def display(data):
 		print(i[0], "\n", i[1], "\n")
 
 if __name__ == "__main__":
-	query = create_query(input())
+	query = create_query(input().split(" "))
 	webpage = get_webpage(query)
 	data = scrape_links(webpage)
 	display(data)
