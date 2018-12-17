@@ -6,3 +6,5 @@
   2. The <b>cli</b> branch is the command line implementation of the webscraper
   
 #### BeautifulSoup4 library is used for the web scraping purpose
+
+#### NOTE: For the <b>cli</b> implementation, cmd+click (MacOS) and a click (Ubuntu) is sufficient. For Windows there is such option for accessing links through command line.
