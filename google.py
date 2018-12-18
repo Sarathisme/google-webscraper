@@ -45,16 +45,12 @@ def scrape_links(webpage):
 # Display the data
 def display(data):
 	toBeDisplayed = ""
-	length = 2
 	for i in data:
-		if len(i[1]) < len(i[0]):
-			length += len(i[1])
-		else:
-			length += len(i[0])
-
-		toBeDisplayed += '\n' + i[1] + '\n'
-		toBeDisplayed +=  i[0] + '\n'
-		toBeDisplayed += i[2] + '\n'
+		toBeDisplayed += '\n' + i[0] + '\n'
+		toBeDisplayed += '-' * 20
+		toBeDisplayed +=  '\n' + i[1] + '\n'
+		toBeDisplayed += '-' * 20
+		toBeDisplayed += '\n' + i[2] + '\n'
 
 	print(toBeDisplayed)
 
