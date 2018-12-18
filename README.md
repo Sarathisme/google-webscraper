@@ -6,3 +6,8 @@
   2. The <b>cli</b> branch is the command line implementation of the webscraper
   
 #### BeautifulSoup4 library is used for the web scraping purpose
+
+#### To install: Open terminal and type "chmod +x install" and then run "install" on the terminal
+
+chmod +x install.sh
+./install.sh

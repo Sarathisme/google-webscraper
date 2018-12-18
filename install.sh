@@ -3,6 +3,9 @@ BS4="pip install beautifulsoup4"
 BIN_DIR="mkdir ~/bin"
 COPY="cp google ~/bin"
 
+eval "chmod +x google.py"
+eval "mv google.py google"
+
 if [ -x "$(command -v python)" ]; then
 	echo "Python installed"
 else
@@ -20,5 +23,7 @@ eval $BS4
 [ -d ~/bin ] && echo "Directory exists!" || eval "$BIN_DIR"
 [ -f ~/bin/google ] && echo "File exists!" || eval $COPY
 
-export PATH=$PATH":$HOME/bin"
+echo 'export PATH=$PATH":$HOME/bin"' >> ~/.bash_profile
 echo "Finished installing!"
+echo "Restart the terminal to see the effects"
+exit 1
