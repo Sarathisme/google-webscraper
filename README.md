@@ -9,5 +9,7 @@
 
 #### To install: Open terminal and type "chmod +x install" and then run "install" on the terminal
 
-chmod +x install.sh
-./install.sh
+#### Commands to perform on terminal to install the software
+  1. chmod +x install.sh<br/>
+  2. ./install.sh<br/>
+  3. Then simply open a new window and type <b>"google <your_query>"</b> to get the results
