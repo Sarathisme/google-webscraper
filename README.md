@@ -4,7 +4,6 @@
 
   1. The <b>master</b> branch is the GUI implementation of the webscraper
   2. The <b>cli</b> branch is the command line implementation of the webscraper
-  
-#### BeautifulSoup4 library is used for the web scraping purpose
+  3. The <b>api</b> branch is the api implementation of the webscraper
 
-#### NOTE: For the <b>cli</b> implementation, cmd+click (MacOS) and a click (Ubuntu) is sufficient. For Windows there is such option for accessing links through command line.
+#### BeautifulSoup4 library is used for the web scraping purpose
