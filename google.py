@@ -2,6 +2,7 @@
 import sys
 from bs4 import BeautifulSoup
 from urllib.request import urlopen, Request
+from termcolor import colored
 
 # Instantiate the LINK global variable
 LINK = "https://www.google.co.in/search?q="
@@ -46,11 +47,11 @@ def scrape_links(webpage):
 def display(data):
 	toBeDisplayed = ""
 	for i in data:
-		toBeDisplayed += '\n' + i[0] + '\n'
-		toBeDisplayed += '-' * 20
-		toBeDisplayed +=  '\n' + i[1] + '\n'
-		toBeDisplayed += '-' * 20
-		toBeDisplayed += '\n' + i[2] + '\n'
+		print()
+		print(colored(i[0], 'green'))
+		print(colored(i[1], 'red'))
+		print(colored(i[2], 'blue'))
+		print()
 
 	print(toBeDisplayed)
 
