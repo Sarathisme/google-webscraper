@@ -1,15 +1,20 @@
 #!/usr/bin/env python
+import flask
 import json
 import sys
 from bs4 import BeautifulSoup
 from urllib.request import urlopen, Request
+
+# Initalize Flask
+app = flask.Flask(__name__)
+app.config["DEBUG"] = False
 
 # Instantiate the LINK global variable
 LINK = "https://www.google.co.in/search?q="
 
 # Build the query
 def create_query(query):
-	return LINK + '+'.join(query)
+	return LINK + '+'.join(query.split('+'))
 
 # Get the webpage
 def get_webpage(query):
@@ -54,11 +59,13 @@ def display(data):
 			'description':i[2]			
 		})
 
-	print(json.dumps(toBeSent))
-	sys.stdout.flush()
+	return json.dumps(toBeSent)
 
-if __name__ == "__main__":
-	query = create_query(sys.argv[1:])
+@app.route('/search/<query>', methods=['GET'])
+def home(query):
+	query = create_query(query)
 	webpage = get_webpage(query)
 	data = scrape_links(webpage)
-	display(data)
+	return display(data)
+	
+app.run()
