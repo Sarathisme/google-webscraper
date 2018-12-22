@@ -1,0 +1,19 @@
+{
+  "name": "google",
+  "version": "1.0.0",
+  "description": "An api for retrieving search articles for a query",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sarathisme/google-webscraper.git"
+  },
+  "author": "Sarath Sattiraju",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sarathisme/google-webscraper/issues"
+  },
+  "homepage": "https://github.com/Sarathisme/google-webscraper#readme"
+}
