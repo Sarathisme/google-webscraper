@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import json
 import sys
 from bs4 import BeautifulSoup
 from urllib.request import urlopen, Request
@@ -44,15 +45,17 @@ def scrape_links(webpage):
 
 # Display the data
 def display(data):
-	toBeDisplayed = ""
+	toBeSent = {}
+	toBeSent['results'] = []
 	for i in data:
-		toBeDisplayed += '\n' + i[0] + '\n'
-		toBeDisplayed += '-' * 20
-		toBeDisplayed +=  '\n' + i[1] + '\n'
-		toBeDisplayed += '-' * 20
-		toBeDisplayed += '\n' + i[2] + '\n'
+		toBeSent['results'].append({
+			'title':i[0],
+			'link':i[1],
+			'description':i[2]			
+		})
 
-	print(toBeDisplayed)
+	print(json.dumps(toBeSent))
+	sys.stdout.flush()
 
 if __name__ == "__main__":
 	query = create_query(sys.argv[1:])
