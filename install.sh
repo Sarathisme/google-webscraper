@@ -1,5 +1,6 @@
 #!/bin/bash
 BS4="pip install beautifulsoup4"
+TERM="pip install termcolor"
 BIN_DIR="mkdir ~/bin"
 COPY="cp google ~/bin"
 
@@ -19,6 +20,7 @@ else
 fi
 
 eval $BS4
+eval $TERM
 
 [ -d ~/bin ] && echo "Directory exists!" || eval "$BIN_DIR"
 [ -f ~/bin/google ] && echo "File exists!" || eval $COPY
