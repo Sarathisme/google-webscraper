@@ -12,60 +12,68 @@ app.config["DEBUG"] = False
 # Instantiate the LINK global variable
 LINK = "https://www.google.co.in/search?q="
 
+
 # Build the query
 def create_query(query):
-	return LINK + '+'.join(query.split('+'))
+    return LINK + '+'.join(query.split('+'))
+
 
 # Get the webpage
 def get_webpage(query):
-	headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.3'}
-	req = Request(url=query, headers=headers)
-	return urlopen(req).read()
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 '
+					  'Safari/537.3'}
+    req = Request(url=query, headers=headers)
+    return urlopen(req).read()
+
 
 # Scrape links from the webpage
 def scrape_links(webpage):
-	bsObj = BeautifulSoup(webpage, "html.parser")
-	div = bsObj.find_all('div', {'id':'res'})
-	divs = div[0].find('div', {'id':'search'}).find_all('div', {'class':'bkWMgd'})
-	info = []
-	for element in divs:
-		try:
-			data = element.find('div', {'class':'srg'}).find_all('div', {'class':'g'})
-			for i in data:
-				total = i.find('div').find('div', {'class':'rc'})
-				temp = total.find('div', {'class': 'r'}).find_all('a')
-				s = total.find('div', {'class': 's'})
-				paras = s.find('div').find('span', {'class':'st'})
-				for j in temp:
-					info.append((j['href'], j.find('h3'), paras.text))
-		except Exception as e:
-			pass
+    bsObj = BeautifulSoup(webpage, "html.parser")
+    div = bsObj.find_all('div', {'id': 'res'})
+    divs = div[0].find('div', {'id': 'search'}).find_all('div', {'class': 'bkWMgd'})
+    info = []
+    for element in divs:
+        try:
+            data = element.find('div', {'class': 'srg'}).find_all('div', {'class': 'g'})
+            for i in data:
+                total = i.find('div').find('div', {'class': 'rc'})
+                temp = total.find('div', {'class': 'r'}).find_all('a')
+                s = total.find('div', {'class': 's'})
+                paras = s.find('div').find('span', {'class': 'st'})
+                for j in temp:
+                    info.append((j['href'], j.find('h3'), paras.text))
+        except Exception as e:
+            pass
 
-	final = []
-	for i in info:
-		if i[0] != '#' and i[1] != None:
-			final.append((i[1].text, i[0], i[2]))
+    final = []
+    for i in info:
+        if i[0] != '#' and i[1] != None:
+            final.append((i[1].text, i[0], i[2]))
 
-	return final
+    return final
+
 
 # Display the data
 def display(data):
-	toBeSent = {}
-	toBeSent['results'] = []
-	for i in data:
-		toBeSent['results'].append({
-			'title':i[0],
-			'link':i[1],
-			'description':i[2]			
-		})
+    toBeSent = {}
+    toBeSent['results'] = []
+    for i in data:
+        toBeSent['results'].append({
+            'title': i[0],
+            'link': i[1],
+            'description': i[2]
+        })
 
-	return json.dumps(toBeSent)
+    return json.dumps(toBeSent)
+
 
 @app.route('/search/<query>', methods=['GET'])
 def home(query):
-	query = create_query(query)
-	webpage = get_webpage(query)
-	data = scrape_links(webpage)
-	return display(data)
-	
+    query = create_query(query)
+    webpage = get_webpage(query)
+    data = scrape_links(webpage)
+    return display(data)
+
+
 app.run()
