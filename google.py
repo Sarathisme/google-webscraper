@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import flask
+from flask_cors import CORS
 import json
 import sys
 from bs4 import BeautifulSoup
@@ -8,6 +9,7 @@ from urllib.request import urlopen, Request
 # Initalize Flask
 app = flask.Flask(__name__)
 app.config["DEBUG"] = False
+CORS(app)
 
 # Instantiate the LINK global variable
 LINK = "https://www.google.co.in/search?q="
