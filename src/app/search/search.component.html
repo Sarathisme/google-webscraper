@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div id="search-page-header">
+    <div id="search-page-header-content">
+      <img id="search-page-logo" src="{{logo}}" alt="Google logo">
+      <input class="form-control" id="search-page-bar" value="{{query}}" [(ngModel)]="query" (keydown.enter)="onEnter()">
+    </div>
+    <div id="search-page-header-categories">
+      <p id="search-page-first-category">All</p>
+      <p>Videos</p>
+      <p>Images</p>
+      <p>News</p>
+      <p>Shopping</p>
+      <p>More</p>
+    </div>
+  </div>
+</div>
+<hr class="divider"/>
+<div class="loader" [hidden]="!loading"></div>
+<div id="search-results">
+  <ul>
+    <li *ngFor="let result of results">
+      <div class="search-result">
+        <a href="{{result.link}}"><h5>{{result.title}}</h5></a>
+        <p class="search-link">{{result.link}}</p>
+        <div class="search-result-description">{{result.description}}</div>
+      </div>
+    </li>
+  </ul>
+</div>
+

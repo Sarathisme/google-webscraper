@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-center align-items-center container" id="homepage">
+  <div id="homepage-content">
+    <img src="{{logo}}" alt="Google logo" id="google-logo">
+    <label for="search-bar"></label>
+    <input class="form-control" id="search-bar" [(ngModel)]="query" value="{{query}}" (keydown.enter)="onEnter()">
+    <div class="d-flex flex-row align-items-center" id="search-buttons">
+      <a class="btn btn-primary search-button" routerLink="/search/{{query}}">Google Search</a>
+      <a class="btn btn-primary search-button" (click)="feelingLucky()">I'm feeling lucky</a>
+    </div>
+  </div>
+  <div class="homepage-footer">
+    <div class="homepage-footer-content">
+      <p class="homepage-footer-tag-country">India</p>
+    </div>
+    <hr class="divider"/>
+    <div class="homepage-footer-content row">
+      <div class="homepage-footer-tag-categories-left col-lg-6">
+        <p class="homepage-footer-tag-categories">Advertising</p>
+        <p class="homepage-footer-tag-categories">Business</p>
+        <p class="homepage-footer-tag-categories">About</p>
+      </div>
+      <div class="homepage-footer-tag-categories-right col-lg-6">
+        <p class="homepage-footer-tag-categories">Privacy</p>
+        <p class="homepage-footer-tag-categories">Terms</p>
+        <p class="homepage-footer-tag-categories">Settings</p>
+      </div>
+    </div>
+  </div>
+</div>

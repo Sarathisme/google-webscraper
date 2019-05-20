@@ -1,0 +1,85 @@
+#homepage {
+  height: 80vh;
+}
+
+#homepage-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#google-logo {
+  margin-bottom: 28px;
+}
+
+#search-bar {
+  width: 37rem;
+  height: 2.5rem;
+  border-radius: 32px;
+  padding: 24px;
+}
+
+#search-bar:focus {
+  outline: #e6f2ff;
+}
+
+#search-buttons {
+  margin-top: 26px;
+}
+
+.search-button {
+  margin-left: 6px;
+  margin-right: 6px;
+  padding: 8px 14px !important;
+  font-size: 14px !important;
+  color: #5F6368 !important;
+  background-color: #f2f2f2 !important;
+  border: 1px solid #f2f2f2 !important;;
+}
+
+.search-button:hover {
+  background-color: #f8f8f8 !important;
+  border: 1px solid #c6c6c6 !important;
+}
+
+.homepage-footer {
+  position: fixed;
+  bottom: 0;
+  height: 96px;
+  width: 100%;
+}
+
+.homepage-footer-content {
+  padding: 4px 32px;
+  background-color: #f2f2f2;
+}
+
+.divider {
+  margin: 0;
+  padding: 0;
+}
+
+.homepage-footer-tag-country {
+  font-size: 16px;
+  margin: 8px !important;
+  color: #5F6368;
+}
+
+.homepage-footer-tag-categories {
+  font-size: 14px;
+  margin: 8px !important;
+  color: #5F6368;
+}
+
+.homepage-footer-tag-categories-right, .homepage-footer-tag-categories-left {
+  display: flex;
+  flex-direction: row;
+}
+
+.homepage-footer-tag-categories-left {
+
+}
+
+.homepage-footer-tag-categories-right {
+  justify-content: flex-end;
+}
